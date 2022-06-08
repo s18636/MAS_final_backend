@@ -26,8 +26,8 @@ public class PrzekazPieniezny extends Przesylka {
     public PrzekazPieniezny() {
     }
 
-    public PrzekazPieniezny(String nadawca, String odbiorca, boolean priorytetowa, double wartosc) {
-        super(nadawca, odbiorca, priorytetowa);
+    public PrzekazPieniezny(String nadawca, String odbiorca, double wartosc) {
+        super(nadawca, odbiorca);
         this.wartosc = wartosc;
     }
 
@@ -36,9 +36,6 @@ public class PrzekazPieniezny extends Przesylka {
     public double getCena() {
 
         double cenaCal = wartosc * 0.015;
-
-        if (priorytetowa)
-            cenaCal += 3;
 
         return cenaCal;
     }
@@ -59,7 +56,6 @@ public class PrzekazPieniezny extends Przesylka {
                 ", nadawca='" + getNadawca() + '\'' +
                 ", odbiorca='" + getOdbiorca() + '\'' +
                 ", cena=" + getCena() +
-                ", priorytetowa=" + priorytetowa +
                 '}';
     }
 }

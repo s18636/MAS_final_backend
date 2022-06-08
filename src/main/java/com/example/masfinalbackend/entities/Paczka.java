@@ -1,17 +1,23 @@
 package com.example.masfinalbackend.entities;
 
 import com.example.masfinalbackend.entities.Przesylka;
+import com.example.masfinalbackend.enums.Size;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
+import static com.example.masfinalbackend.enums.Size.*;
+
 @Entity(name = "Paczka")
 public class Paczka extends Przesylka {
 
+    private static final double MAX_WAGA = 50;
+
     private long id;
+
     @Id
-    @GeneratedValue(generator="increment")
-    @GenericGenerator(name="increment", strategy = "increment")
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
     public long getId() {
         return id;
     }
@@ -21,13 +27,13 @@ public class Paczka extends Przesylka {
     }
 
     private double waga;
-    private char gabaryt;
+    private Size gabaryt;
 
     public Paczka() {
     }
 
-    public Paczka(String nadawca, String odbiorca, boolean priorytetowa, double waga, char gabaryt) {
-        super(nadawca, odbiorca, priorytetowa);
+    public Paczka(String nadawca, String odbiorca, double waga, Size gabaryt) {
+        super(nadawca, odbiorca);
         this.waga = waga;
         this.gabaryt = gabaryt;
     }
@@ -36,26 +42,25 @@ public class Paczka extends Przesylka {
     @Transient
     public double getCena() {
         double cenaCal = 0;
-        if(waga < 1 )
+        if (waga < 1)
             cenaCal = 13;
         else if (waga >= 1 && waga < 2)
             cenaCal = 15;
         else if (waga >= 2 && waga < 5)
             cenaCal = 18;
-        else if(waga >=5 && waga < 10)
+        else if (waga >= 5 && waga < 10)
             cenaCal = 24;
 
-        if(priorytetowa)
-            cenaCal += 1;
-
         switch (gabaryt) {
-            case 'A':
-            case 'a': cenaCal += 0;
+            case S:
+                cenaCal += 0;
                 break;
-            case 'B':
-            case 'b' : cenaCal += 1;
+            case M:
+                cenaCal += 1;
                 break;
-            default : cenaCal += 2;
+            case L:
+                cenaCal += 2;
+                break;
         }
 
         return cenaCal;
@@ -71,11 +76,11 @@ public class Paczka extends Przesylka {
     }
 
     @Basic
-    public char getGabaryt() {
+    public Size getGabaryt() {
         return gabaryt;
     }
 
-    public void setGabaryt(char gabaryt) {
+    public void setGabaryt(Size gabaryt) {
         this.gabaryt = gabaryt;
     }
 
@@ -87,7 +92,6 @@ public class Paczka extends Przesylka {
                 ", nadawca='" + getNadawca() + '\'' +
                 ", odbiorca='" + getOdbiorca() + '\'' +
                 ", cena=" + getCena() +
-                ", priorytetowa=" + priorytetowa +
                 '}';
     }
 }

@@ -1,15 +1,16 @@
 package com.example.masfinalbackend.entities;
 
+import com.example.masfinalbackend.enums.PackageState;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity(name="Przesylka")
 //https://thorben-janssen.com/complete-guide-inheritance-strategies-jpa-hibernate/#Joined
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Przesylka {
 
-    boolean priorytetowa;
     private long id;
 
 
@@ -24,38 +25,36 @@ public abstract class Przesylka {
         this.id = id;
     }
 
-    private Kurier kurier;
-
-
     private String nadawca;
     private String odbiorca;
 
-    private double waga;
+    private PackageState statusPrzesylki;
 
-    private Double znizka;
+    private Date dataPrzyjecia;
+    private Date dataDostarczenia;
 
 
     public Przesylka() {
 
     }
 
-    public Przesylka(String nadawca, String odbiorca, boolean priorytetowa) {
+    public Przesylka(String nadawca, String odbiorca) {
         this.nadawca = nadawca;
         this.odbiorca = odbiorca;
-        this.priorytetowa = priorytetowa;
+        this.statusPrzesylki = PackageState.OCZEKUJACA_NA_WYDANIE;
     }
 
     @ManyToOne
-    public Kurier getKurier() {
-        return kurier;
+    private Adres adresNadawcy;
 
-    }
+    @ManyToOne
+    private Adres adresOdbiorcy;
 
-    public void setKurier(Kurier kurier) {
-        this.kurier = kurier;
-    }
+    @ManyToOne
+    private Dostawa dostawa;
 
-
+    @ManyToOne
+    private PracownikPlacowki pracownikPlacowki;
 
     @Transient
     public abstract double getCena();
@@ -79,26 +78,36 @@ public abstract class Przesylka {
         this.odbiorca = odbiorca;
     }
 
-    @Basic(optional = true)
-    public Double getZnizka() {
-        return znizka;
+    public PackageState getStatusPrzesylki() {
+        return statusPrzesylki;
     }
 
-    public void setZnizka(Double znizka) {
-        this.znizka = znizka;
+    public void setStatusPrzesylki(PackageState statusPrzesylki) {
+        this.statusPrzesylki = statusPrzesylki;
     }
 
+    public Date getDataPrzyjecia() {
+        return dataPrzyjecia;
+    }
 
+    public void setDataPrzyjecia(Date dataPrzyjecia) {
+        this.dataPrzyjecia = dataPrzyjecia;
+    }
+
+    public Date getDataDostarczenia() {
+        return dataDostarczenia;
+    }
+
+    public void setDataDostarczenia(Date dataDostarczenia) {
+        this.dataDostarczenia = dataDostarczenia;
+    }
 
     @Override
     public String toString() {
-
-
         return "Paczka{" +
                 "nadawca=" + getNadawca() +
                 ", odbiorca=" + getOdbiorca() +
                 ", cena=" + getCena() +
-                ", Kurier={" + ((kurier != null)?"imie=" + kurier.getImie() + " nazwisko=" + kurier.getNazwisko():"") + "}" +
                 '}';
     }
 

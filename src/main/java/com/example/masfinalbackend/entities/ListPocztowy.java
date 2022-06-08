@@ -1,6 +1,7 @@
 package com.example.masfinalbackend.entities;
 
 import com.example.masfinalbackend.entities.Przesylka;
+import com.example.masfinalbackend.enums.Size;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -8,6 +9,8 @@ import javax.persistence.*;
 
 @Entity(name = "List")
 public class ListPocztowy extends Przesylka {
+
+    private static final double MAX_WAGA = 50;
 
     private long id;
 
@@ -24,13 +27,13 @@ public class ListPocztowy extends Przesylka {
 
 
     private double waga;
-    private char format;
+    private Size format;
 
     public ListPocztowy() {
     }
 
-    public ListPocztowy(String nadawca, String odbiorca, boolean priorytetowa, double waga, char format) {
-        super(nadawca, odbiorca, priorytetowa);
+    public ListPocztowy(String nadawca, String odbiorca, double waga, Size format) {
+        super(nadawca, odbiorca);
         this.waga = waga;
         this.format = format;
     }
@@ -41,24 +44,21 @@ public class ListPocztowy extends Przesylka {
         double cenaCal = 0;
 
         if(waga < 500) {
-            if (format == 'S')
+            if (format == Size.S)
                 cenaCal = 5;
-            if (format == 'M')
+            if (format == Size.M)
                 cenaCal = 7;
-            if (format == 'L')
+            if (format == Size.L)
                 cenaCal = 15;
 
         }else if (waga >= 500 && waga < 1000) {
-            if (format == 'M')
+            if (format == Size.M)
                 cenaCal = 7;
-            if (format == 'L')
+            if (format == Size.L)
                 cenaCal = 15;
         }
         else if (waga >= 1000 && waga < 2000)
             cenaCal = 15;
-
-        if(priorytetowa)
-            cenaCal += 1;
 
         return cenaCal;
     }
@@ -73,11 +73,11 @@ public class ListPocztowy extends Przesylka {
     }
 
     @Basic
-    public char getFormat() {
+    public Size getFormat() {
         return format;
     }
 
-    public void setFormat(char format) {
+    public void setFormat(Size format) {
         this.format = format;
     }
 
@@ -89,7 +89,6 @@ public class ListPocztowy extends Przesylka {
                 ", nadawca='" + getNadawca() + '\'' +
                 ", odbiorca='" + getOdbiorca() + '\'' +
                 ", cena=" + getCena() +
-                ", priorytetowa=" + priorytetowa +
                 '}';
     }
 }

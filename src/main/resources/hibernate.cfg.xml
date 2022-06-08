@@ -1,0 +1,47 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <!-- Database connection settings -->
+        <property name="connection.driver_class">org.h2.Driver</property>
+        <property name="connection.url">jdbc:h2:~/test</property>
+        <property name="connection.username">sa</property>
+        <property name="connection.password"></property>
+
+        <!-- JDBC connection pool (use the built-in) -->
+        <property name="connection.pool_size">1</property>
+
+        <!-- SQL dialect -->
+        <property name="dialect">org.hibernate.dialect.H2Dialect</property>
+
+        <!-- Disable the second-level cache  -->
+        <property name="cache.provider_class">org.hibernate.cache.internal.NoCachingRegionFactory</property>
+
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">true</property>
+
+        <!--Drop and re-create the database schema on startup-->
+        <property name="hbm2ddl.auto">create</property>
+
+        <!-- Enable Hibernate stats in the logs -->
+        <property name="hibernate.generate_statistics">false</property>
+
+        <!-- Full names the annotated entity class -->
+        <mapping class="com.example.masfinalbackend.entities.Adres"/>
+        <mapping class="com.example.masfinalbackend.entities.Dostawa"/>
+        <mapping class="com.example.masfinalbackend.entities.KategoriaPrawaJazdy"/>
+        <mapping class="com.example.masfinalbackend.entities.KierownikPlacowki"/>
+        <mapping class="com.example.masfinalbackend.entities.Kurier"/>
+        <mapping class="com.example.masfinalbackend.entities.ListPocztowy"/>
+        <mapping class="com.example.masfinalbackend.entities.Paczka"/>
+        <mapping class="com.example.masfinalbackend.entities.Pojazd"/>
+        <mapping class="com.example.masfinalbackend.entities.Pracownik"/>
+        <mapping class="com.example.masfinalbackend.entities.PracownikPlacowki"/>
+        <mapping class="com.example.masfinalbackend.entities.PrzekazPieniezny"/>
+        <mapping class="com.example.masfinalbackend.entities.Przesylka"/>
+        <mapping class="com.example.masfinalbackend.entities.Zatrudnienie"/>
+
+    </session-factory>
+</hibernate-configuration>
