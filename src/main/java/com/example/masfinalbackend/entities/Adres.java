@@ -1,23 +1,21 @@
 package com.example.masfinalbackend.entities;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.sql.Update;
 
 import javax.persistence.*;
 import java.util.List;
 
-@Entity(name="Adres")
+@Entity(name="adres")
 public class Adres {
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     public void setId(Long id) {
         this.id = id;
     }
-
-    @Id
-    @GeneratedValue(generator="increment")
-    @GenericGenerator(name="increment", strategy = "increment")
     public Long getId() {
         return id;
     }
@@ -31,12 +29,13 @@ public class Adres {
     private String miasto;
 
     @ManyToOne
+    @JoinColumn(name = "id")
     private Pracownik pracownik;
 
-    @OneToMany
+    @OneToMany(mappedBy = "adresNadawcy")
     private List<Przesylka> wychodzace;
 
-    @OneToMany
+    @OneToMany(mappedBy = "adresOdbiorcy")
     private List<Przesylka> przychodzace;
 
     public String getUlica() {
@@ -77,5 +76,21 @@ public class Adres {
 
     public void setPracownik(Pracownik pracownik) {
         this.pracownik = pracownik;
+    }
+
+    public List<Przesylka> getWychodzace() {
+        return wychodzace;
+    }
+
+    public void setWychodzace(List<Przesylka> wychodzace) {
+        this.wychodzace = wychodzace;
+    }
+
+    public List<Przesylka> getPrzychodzace() {
+        return przychodzace;
+    }
+
+    public void setPrzychodzace(List<Przesylka> przychodzace) {
+        this.przychodzace = przychodzace;
     }
 }

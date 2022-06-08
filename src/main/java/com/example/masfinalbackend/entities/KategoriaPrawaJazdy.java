@@ -7,18 +7,17 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-@Entity(name="KategoriaPrawaJazdy")
+@Entity(name="kategoriaPrawaJazdy")
 public class KategoriaPrawaJazdy {
 
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     public void setId(Long id) {
         this.id = id;
     }
-
-    @Id
-    @GeneratedValue(generator="increment")
-    @GenericGenerator(name="increment", strategy = "increment")
     public Long getId() {
         return id;
     }
@@ -44,5 +43,13 @@ public class KategoriaPrawaJazdy {
 
     public void setDataWaznosciKategori(Date dataWaznosciKategori) {
         this.dataWaznosciKategori = dataWaznosciKategori;
+    }
+
+    public List<Kurier> getKurier() {
+        return kurier;
+    }
+
+    public void setKurier(List<Kurier> kurier) {
+        this.kurier = kurier;
     }
 }

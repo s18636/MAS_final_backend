@@ -2,7 +2,7 @@ package com.example.masfinalbackend.entities;
 
 import javax.persistence.Entity;
 
-@Entity(name="KierownikPlacowki")
+@Entity(name="kierownikPlacowki")
 public class KierownikPlacowki extends Pracownik{
 
     //??????

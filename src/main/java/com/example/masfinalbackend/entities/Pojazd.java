@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
 
-@Entity(name = "Pojazd")
+@Entity(name = "pojazd")
 public class Pojazd {
 
     private static Set<String> numeryRejestracyjne;
@@ -25,15 +25,13 @@ public class Pojazd {
         this.stan = VechicleState.GOTOWY;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     public void setId(Long id) {
         this.id = id;
     }
-
-    @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name = "increment", strategy = "increment")
     public Long getId() {
         return id;
     }
@@ -44,7 +42,7 @@ public class Pojazd {
 
     private String model;
 
-    @OneToMany
+    @OneToMany(mappedBy = "pojazd")
     private List<Dostawa> dostawy;
 
     @Enumerated
@@ -91,5 +89,21 @@ public class Pojazd {
 
     public void setStan(VechicleState stan) {
         this.stan = stan;
+    }
+
+    public static Set<String> getNumeryRejestracyjne() {
+        return numeryRejestracyjne;
+    }
+
+    public static void setNumeryRejestracyjne(Set<String> numeryRejestracyjne) {
+        Pojazd.numeryRejestracyjne = numeryRejestracyjne;
+    }
+
+    public List<Dostawa> getDostawy() {
+        return dostawy;
+    }
+
+    public void setDostawy(List<Dostawa> dostawy) {
+        this.dostawy = dostawy;
     }
 }

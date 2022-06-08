@@ -5,20 +5,8 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
-@Entity(name = "PrzekazPieniezny")
+@Entity(name = "przekazPieniezny")
 public class PrzekazPieniezny extends Przesylka {
-
-    private long id;
-    @Id
-    @GeneratedValue(generator="increment")
-    @GenericGenerator(name="increment", strategy = "increment")
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     private double wartosc;
 

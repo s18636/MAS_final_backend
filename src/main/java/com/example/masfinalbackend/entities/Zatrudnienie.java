@@ -6,7 +6,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity(name = "Zatrudnienie")
+@Entity(name = "zatrudnienie")
 public class Zatrudnienie {
 
     public Zatrudnienie() {
@@ -20,15 +20,14 @@ public class Zatrudnienie {
         this.pracownik = pracownik;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name = "increment", strategy = "increment")
     public Long getId() {
         return id;
     }
@@ -40,8 +39,8 @@ public class Zatrudnienie {
     private AgreementType rodzajUmowy;
 
     @ManyToOne
+    @JoinColumn(name = "id")
     private Pracownik pracownik;
-
 
     public Date getDataRozpoczecia() {
         return dataRozpoczecia;

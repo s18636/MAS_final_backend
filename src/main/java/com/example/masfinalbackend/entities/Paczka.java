@@ -8,23 +8,10 @@ import javax.persistence.*;
 
 import static com.example.masfinalbackend.enums.Size.*;
 
-@Entity(name = "Paczka")
+@Entity(name = "paczka")
 public class Paczka extends Przesylka {
 
     private static final double MAX_WAGA = 50;
-
-    private long id;
-
-    @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name = "increment", strategy = "increment")
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     private double waga;
     private Size gabaryt;

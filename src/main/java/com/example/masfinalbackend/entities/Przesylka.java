@@ -1,22 +1,19 @@
 package com.example.masfinalbackend.entities;
 
 import com.example.masfinalbackend.enums.PackageState;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity(name="Przesylka")
+@Entity(name="przesylka")
 //https://thorben-janssen.com/complete-guide-inheritance-strategies-jpa-hibernate/#Joined
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Przesylka {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-
-    @Id
-    @GeneratedValue(generator="increment")
-    @GenericGenerator(name="increment", strategy = "increment")
     public long getId() {
         return id;
     }
@@ -45,15 +42,19 @@ public abstract class Przesylka {
     }
 
     @ManyToOne
+    @JoinColumn(name="id")
     private Adres adresNadawcy;
 
     @ManyToOne
+    @JoinColumn(name="id")
     private Adres adresOdbiorcy;
 
     @ManyToOne
+    @JoinColumn(name = "id")
     private Dostawa dostawa;
 
     @ManyToOne
+    @JoinColumn(name = "id")
     private PracownikPlacowki pracownikPlacowki;
 
     @Transient
@@ -100,6 +101,38 @@ public abstract class Przesylka {
 
     public void setDataDostarczenia(Date dataDostarczenia) {
         this.dataDostarczenia = dataDostarczenia;
+    }
+
+    public Adres getAdresNadawcy() {
+        return adresNadawcy;
+    }
+
+    public void setAdresNadawcy(Adres adresNadawcy) {
+        this.adresNadawcy = adresNadawcy;
+    }
+
+    public Adres getAdresOdbiorcy() {
+        return adresOdbiorcy;
+    }
+
+    public void setAdresOdbiorcy(Adres adresOdbiorcy) {
+        this.adresOdbiorcy = adresOdbiorcy;
+    }
+
+    public Dostawa getDostawa() {
+        return dostawa;
+    }
+
+    public void setDostawa(Dostawa dostawa) {
+        this.dostawa = dostawa;
+    }
+
+    public PracownikPlacowki getPracownikPlacowki() {
+        return pracownikPlacowki;
+    }
+
+    public void setPracownikPlacowki(PracownikPlacowki pracownikPlacowki) {
+        this.pracownikPlacowki = pracownikPlacowki;
     }
 
     @Override

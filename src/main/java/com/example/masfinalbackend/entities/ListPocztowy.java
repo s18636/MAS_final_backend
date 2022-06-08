@@ -1,30 +1,15 @@
 package com.example.masfinalbackend.entities;
 
-import com.example.masfinalbackend.entities.Przesylka;
 import com.example.masfinalbackend.enums.Size;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
 
-@Entity(name = "List")
+@Entity(name = "list")
 public class ListPocztowy extends Przesylka {
 
     private static final double MAX_WAGA = 50;
-
-    private long id;
-
-    @Id
-    @GeneratedValue(generator="increment")
-    @GenericGenerator(name="increment", strategy = "increment")
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
 
     private double waga;
     private Size format;
