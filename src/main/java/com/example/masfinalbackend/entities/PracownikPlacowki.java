@@ -24,7 +24,7 @@ public class PracownikPlacowki extends Pracownik {
     private List<PracownikPlacowki> podwladni;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(referencedColumnName = "pracownik_id")
     private PracownikPlacowki przelozony;
 
     @OneToMany(mappedBy = "pracownikPlacowki")

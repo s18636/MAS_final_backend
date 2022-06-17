@@ -20,7 +20,7 @@ public class Kurier extends Pracownik {
     private List<KategoriaPrawaJazdy> kategoriaPrawaJazdy;
 
     @OneToMany
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "dostawa_id")
     private List<Dostawa> dostawy;
 
     public List<KategoriaPrawaJazdy> getKategoriaPrawaJazdy() {

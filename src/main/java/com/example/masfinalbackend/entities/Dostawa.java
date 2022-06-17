@@ -1,7 +1,6 @@
 package com.example.masfinalbackend.entities;
 
 import com.example.masfinalbackend.enums.DeliveryStatus;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -12,13 +11,13 @@ public class Dostawa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long dostawa_id;
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setDostawa_id(Long id) {
+        this.dostawa_id = id;
     }
-    public Long getId() {
-        return id;
+    public Long getDostawa_id() {
+        return dostawa_id;
     }
 
     public Dostawa(){
@@ -34,15 +33,15 @@ public class Dostawa {
     private DeliveryStatus status;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "pracownik_id", updatable = false, insertable = false, nullable = false)
     private Kurier kurier;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "pracownik_id", updatable = false, insertable = false, nullable = false)
     private Pracownik pracownik;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "pojazd_id")
     private Pojazd pojazd;
 
     @OneToMany(mappedBy = "dostawa")

@@ -12,14 +12,14 @@ public abstract class Przesylka {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long przesylkaId;
 
-    public long getId() {
-        return id;
+    public long getPrzesylkaId() {
+        return przesylkaId;
     }
 
-    private void setId(long id) {
-        this.id = id;
+    private void setPrzesylkaId(long id) {
+        this.przesylkaId = id;
     }
 
     private String nadawca;
@@ -42,19 +42,19 @@ public abstract class Przesylka {
     }
 
     @ManyToOne
-    @JoinColumn(name="id")
+    @JoinColumn(name="adres_id", updatable = false, insertable = false, nullable = false)
     private Adres adresNadawcy;
 
     @ManyToOne
-    @JoinColumn(name="id")
+    @JoinColumn(name="adres_id", updatable = false, insertable = false, nullable = false)
     private Adres adresOdbiorcy;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "dostawa_id")
     private Dostawa dostawa;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "pracownik_id")
     private PracownikPlacowki pracownikPlacowki;
 
     @Transient

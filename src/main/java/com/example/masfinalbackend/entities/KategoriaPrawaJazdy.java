@@ -1,7 +1,6 @@
 package com.example.masfinalbackend.entities;
 
 import com.example.masfinalbackend.enums.DrivingLicenseCategory;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -13,13 +12,13 @@ public class KategoriaPrawaJazdy {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long katId;
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setKatId(Long id) {
+        this.katId = id;
     }
-    public Long getId() {
-        return id;
+    public Long getKatId() {
+        return katId;
     }
 
     private DrivingLicenseCategory kategoria;

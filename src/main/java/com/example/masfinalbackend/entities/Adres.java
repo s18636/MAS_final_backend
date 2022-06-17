@@ -1,23 +1,29 @@
 package com.example.masfinalbackend.entities;
 
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.sql.Update;
-
 import javax.persistence.*;
 import java.util.List;
 
 @Entity(name="adres")
 public class Adres {
 
+    public Adres() {
+    }
+    public Adres(String ulica, String numerMieszkania, String kodPocztowy, String miasto) {
+        this.ulica = ulica;
+        this.numerMieszkania = numerMieszkania;
+        this.kodPocztowy = kodPocztowy;
+        this.miasto = miasto;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long adres_id;
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setAdres_id(Long id) {
+        this.adres_id = id;
     }
-    public Long getId() {
-        return id;
+    public Long getAdres_id() {
+        return adres_id;
     }
 
     private String ulica;
@@ -29,7 +35,7 @@ public class Adres {
     private String miasto;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "pracownik_id")
     private Pracownik pracownik;
 
     @OneToMany(mappedBy = "adresNadawcy")

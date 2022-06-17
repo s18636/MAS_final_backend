@@ -1,7 +1,6 @@
 package com.example.masfinalbackend.entities;
 
 import com.example.masfinalbackend.enums.AgreementType;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -22,14 +21,14 @@ public class Zatrudnienie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long zatrudnienieId;
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setZatrudnienieId(Long id) {
+        this.zatrudnienieId = id;
     }
 
-    public Long getId() {
-        return id;
+    public Long getZatrudnienieId() {
+        return zatrudnienieId;
     }
 
     private Date dataRozpoczecia;
@@ -39,7 +38,7 @@ public class Zatrudnienie {
     private AgreementType rodzajUmowy;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "pracownik_id")
     private Pracownik pracownik;
 
     public Date getDataRozpoczecia() {

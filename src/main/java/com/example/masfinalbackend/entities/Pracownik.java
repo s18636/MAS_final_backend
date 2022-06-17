@@ -9,16 +9,15 @@ public abstract class Pracownik {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //gen id do zmniany wszędzie
-//    @Column(unique = true, nullable = false)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long pracownikId;
 
-    public long getId() {
-        return id;
+    public long getPracownikId() {
+        return pracownikId;
     }
 
-    private void setId(long id) {
-        this.id = id;
+    private void setPracownikId(long id) {
+        this.pracownikId = id;
     }
 
     public Pracownik(){

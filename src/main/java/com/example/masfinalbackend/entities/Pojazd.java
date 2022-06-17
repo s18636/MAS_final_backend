@@ -2,7 +2,6 @@ package com.example.masfinalbackend.entities;
 
 import com.example.masfinalbackend.enums.VechicleState;
 import com.example.masfinalbackend.enums.VechicleType;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.List;
@@ -27,13 +26,13 @@ public class Pojazd {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long pojazdId;
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setPojazdId(Long id) {
+        this.pojazdId = id;
     }
-    public Long getId() {
-        return id;
+    public Long getPojazdId() {
+        return pojazdId;
     }
 
     private String numerRejestracyjny; //unique
