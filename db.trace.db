@@ -1956,3 +1956,43 @@ java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supporte
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabela "CATALOGS" nie istnieje
 Table "CATALOGS" not found; SQL statement:
 select CATALOG_NAME from INFORMATION_SCHEMA.CATALOGS [42102-210]
+2022-06-19 16:32:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "create table financial_transfer ([*]value double not null, shipment_id bigint not null, primary key (shipment_id))"; oczekiwano "identifier"
+Syntax error in SQL statement "create table financial_transfer ([*]value double not null, shipment_id bigint not null, primary key (shipment_id))"; expected "identifier"; SQL statement:
+create table financial_transfer (value double not null, shipment_id bigint not null, primary key (shipment_id)) [42001-214]
+2022-06-19 16:32:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabela "FINANCIAL_TRANSFER" nie istnieje
+Table "FINANCIAL_TRANSFER" not found; SQL statement:
+alter table financial_transfer add constraint FKy1cfcsoa5lpii5utt6ve2wds foreign key (shipment_id) references shipment [42102-214]
+2022-06-19 16:33:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "create table financial_transfer ([*]value double not null, shipment_id bigint not null, primary key (shipment_id))"; oczekiwano "identifier"
+Syntax error in SQL statement "create table financial_transfer ([*]value double not null, shipment_id bigint not null, primary key (shipment_id))"; expected "identifier"; SQL statement:
+create table financial_transfer (value double not null, shipment_id bigint not null, primary key (shipment_id)) [42001-214]
+2022-06-19 16:33:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabela "FINANCIAL_TRANSFER" nie istnieje
+Table "FINANCIAL_TRANSFER" not found; SQL statement:
+alter table financial_transfer add constraint FKy1cfcsoa5lpii5utt6ve2wds foreign key (shipment_id) references shipment [42102-214]
+2022-06-19 16:34:25 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "create table financial_transfer ([*]value double not null, shipment_id bigint not null, primary key (shipment_id))"; oczekiwano "identifier"
+Syntax error in SQL statement "create table financial_transfer ([*]value double not null, shipment_id bigint not null, primary key (shipment_id))"; expected "identifier"; SQL statement:
+create table financial_transfer (value double not null, shipment_id bigint not null, primary key (shipment_id)) [42001-214]
+2022-06-19 16:34:25 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabela "FINANCIAL_TRANSFER" nie istnieje
+Table "FINANCIAL_TRANSFER" not found; SQL statement:
+alter table financial_transfer add constraint FKy1cfcsoa5lpii5utt6ve2wds foreign key (shipment_id) references shipment [42102-214]
+2022-06-19 16:39:33 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "create table financial_transfer ([*]value double not null, shipment_id bigint not null, primary key (shipment_id))"; oczekiwano "identifier"
+Syntax error in SQL statement "create table financial_transfer ([*]value double not null, shipment_id bigint not null, primary key (shipment_id))"; expected "identifier"; SQL statement:
+create table financial_transfer (value double not null, shipment_id bigint not null, primary key (shipment_id)) [42001-214]
+2022-06-19 16:39:33 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabela "FINANCIAL_TRANSFER" nie istnieje
+Table "FINANCIAL_TRANSFER" not found; SQL statement:
+alter table financial_transfer add constraint FKy1cfcsoa5lpii5utt6ve2wds foreign key (shipment_id) references shipment [42102-214]
+2022-06-19 16:41:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "create table money_transfer ([*]value double not null, shipment_id bigint not null, primary key (shipment_id))"; oczekiwano "identifier"
+Syntax error in SQL statement "create table money_transfer ([*]value double not null, shipment_id bigint not null, primary key (shipment_id))"; expected "identifier"; SQL statement:
+create table money_transfer (value double not null, shipment_id bigint not null, primary key (shipment_id)) [42001-214]
+2022-06-19 16:41:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabela "MONEY_TRANSFER" nie istnieje
+Table "MONEY_TRANSFER" not found; SQL statement:
+alter table money_transfer add constraint FK8g79cxkrkkh59q0l1hvhl6f1l foreign key (shipment_id) references shipment [42102-214]

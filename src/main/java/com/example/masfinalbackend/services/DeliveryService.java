@@ -1,7 +1,7 @@
 package com.example.masfinalbackend.services;
 
-import com.example.masfinalbackend.entities.Dostawa;
-import com.example.masfinalbackend.repository.DostawaRepo;
+import com.example.masfinalbackend.entities.Delivery;
+import com.example.masfinalbackend.repository.DeliveryRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -9,16 +9,16 @@ import java.util.List;
 
 @Service
 @Transactional
-public class DostawaService {
+public class DeliveryService {
 
-    private final DostawaRepo repo;
+    private final DeliveryRepository repo;
 
-    public DostawaService(DostawaRepo repo) {
+    public DeliveryService(DeliveryRepository repo) {
         this.repo = repo;
     }
 
-    public List<Dostawa> getDostepneDostawy(){
-        List<Dostawa> dostawy = repo.getAllReady();
+    public List<Delivery> getAvailableShipments(){
+        List<Delivery> dostawy = repo.getAllReady();
         if(dostawy.isEmpty()){
             throw new RuntimeException();
         }
